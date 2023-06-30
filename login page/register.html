@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register page</title>
+
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="sidenav">
+      <div class="login-main-text">
+        <img
+          src="https://www.pixel4k.com/wp-content/uploads/2019/12/miles-art-red-theme_1576085534.jpg"
+          alt=""
+          width="100%"
+        />
+        <h1 class="login-page-text">Welcome Page</h1>
+        <p class="text">Register to continue!</p>
+      </div>
+    </div>
+    <div class="main">
+      <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+          <form>
+            <h1 class="name">Register</h1>
+            <div class="form-group">
+              <label>User Name</label> <input type="text" id="username" />
+              <p id="userError"></p>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="password" />
+              <p id="passwordError"></p>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" id="confirmPassword" />
+              <p id="confirmPasswordError"></p>
+            </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="checkRegister()"
+            >
+              <a href="#">Register</a>
+            </button>
+            <button type="button" class="btn btn-black">
+              <a href="./login.html">Login</a>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function checkRegister() {
+      var check = 0;
+      var username = document.getElementById("username").value;
+      var usernameError = document.getElementById("userError");
+      var password = document.getElementById("password").value;
+      var passwordError = document.getElementById("passwordError");
+      var confirmPassword = document.getElementById("confirmPassword").value;
+      var confirmPasswordError = document.getElementById(
+        "confirmPasswordError"
+      );
+      usernameError.innerHTML = " ";
+      passwordError.innerHTML = " ";
+      confirmPasswordError.innerHTML = " ";
+      var p = document.createElement("p");
+      var p1 = document.createElement("p1");
+      var p2 = document.createElement("p2");
+      p.style.color = "red";
+      p1.style.color = "red";
+      p2.style.color = "red";
+      if (document.getElementById("username").value == "") {
+        p.innerHTML = "Please fill username";
+        usernameError.appendChild(p);
+      } else {
+        check += 1;
+      }
+
+      if (document.getElementById("password").value == "") {
+        p1.innerHTML = "Please fill password";
+        passwordError.appendChild(p1);
+      } else {
+        check += 1;
+      }
+
+      if (document.getElementById("confirmPassword").value == "") {
+        p2.innerHTML = "Please confirm password";
+        confirmPasswordError.appendChild(p2);
+      } else {
+        check += 1;
+      }
+      // register
+      var userList = JSON.parse(localStorage.getItem("userList")) || [];
+      var flag = true;
+      if (userList.length > 0) {
+        for (var i = 0; i < userList.length; i++) {
+          if (userList[i].username == username) {
+            flag = false;
+            break;
+          }
+        }
+      }
+      // Neu dieu kien dung
+      if (flag && check == 3) {
+        console.log(flag, check, confirmPassword);
+        // Them nguoi dung moi vao
+        userList.push({
+          username: username,
+          password: password,
+          confirmPassword: confirmPassword,
+        });
+        localStorage.setItem("userList", JSON.stringify(userList));
+        window.location.assign("./login.html");
+      } else {
+        // Xu li loi
+        console.log("tài khoản đã tồn tại");
+      }
+    }
+  </script>
+</html>

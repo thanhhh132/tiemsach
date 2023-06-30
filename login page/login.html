@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login page</title>
+
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      .btn-black {
+        background-color: #d11616 !important;
+        color: #fff;
+      }
+      .btn-black a {
+        background-color: #d11616 !important;
+        color: #ffffff;
+      }
+      .btn-secondary {
+        margin-left: 20px;
+        background-color: whitesmoke;
+        color: #fff;
+      }
+      .btn-secondary a {
+        color: #746d6d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidenav">
+      <div class="login-main-text">
+        <img
+          src="https://www.pixel4k.com/wp-content/uploads/2019/12/miles-art-red-theme_1576085534.jpg"
+          alt=""
+          width="100%"
+        />
+        <h1 class="login-page-text">Welcome Page</h1>
+        <p class="text">
+          Login to <br />
+          Continue access
+        </p>
+      </div>
+    </div>
+    <div class="main">
+      <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+          <form>
+            <h1 class="name">Login</h1>
+            <div class="form-group">
+              <label>User Name</label> <input type="text" id="username" />
+              <p id="userError"></p>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="password" />
+              <p id="passwordError"></p>
+            </div>
+            <button type="button" class="btn btn-black" onclick="checkLogin()">
+              <a href="#">Login</a>
+            </button>
+            <button type="button" class="btn btn-secondary">
+              <a href="./register.html">Register</a>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function checkLogin() {
+      var check = 0;
+      var username = document.getElementById("username").value;
+      var usernameError = document.getElementById("userError");
+      var password = document.getElementById("password").value;
+      var passwordError = document.getElementById("passwordError");
+      var currentUser = JSON.parse(localStorage.getItem("user"));
+      usernameError.innerHTML = " ";
+      passwordError.innerHTML = " ";
+      var p = document.createElement("p");
+      var p1 = document.createElement("p1");
+      p.style.color = "red";
+      p1.style.color = "red";
+      if (document.getElementById("username").value == "") {
+        p.innerHTML = "Please fill username";
+        usernameError.appendChild(p);
+      } else {
+        check += 1;
+      }
+
+      if (document.getElementById("password").value == "") {
+        p1.innerHTML = "Please fill password";
+        passwordError.appendChild(p1);
+      } else {
+        check += 1;
+      }
+      // login
+      // console.log(username, password);
+      if (currentUser) {
+        window.location.href = "./index.html";
+      }
+      var userList = JSON.parse(localStorage.getItem("userList")) || [];
+      var flag = false;
+      if (userList.length > 0) {
+        for (var i = 0; i < userList.length; i++) {
+          if (
+            userList[i].username === username &&
+            userList[i].password === password
+          ) {
+            flag = true;
+            break;
+          }
+        }
+      }
+      // Neu dieu kien dung
+      console.log(flag, check);
+      if (flag && check == 2) {
+        // Xet nguoi dung hien tai
+        var newUser = {
+          username: username,
+          password: password,
+        };
+        localStorage.setItem("user", JSON.stringify(newUser));
+        if (username.value === "admin") {
+          window.location.href = "./index.html"; // Trang table
+        } else {
+          window.location.href = "../index.html"; // Trang danh sach san pham
+        }
+      } else {
+        // Xu li loi
+        console.log("username hoac password sai");
+      }
+    }
+  </script>
+</html>

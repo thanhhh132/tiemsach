@@ -384,7 +384,7 @@ a{
     font-size: 15px;
     width: 80%;
     margin-left: auto;
-    margin-right: 125px;
+    margin-right: 115px;
 }
 
 .menu-icons{
@@ -411,7 +411,7 @@ a{
 .anh-3{
     display: flex;
     padding: 20px;
-    margin-left: 115px;
+    margin-left: 100px;
 }
 .anh-4{
     margin-left: 20px;
@@ -462,9 +462,6 @@ a{
     margin-left: auto;
     margin-right: 10px;
     text-align: center;
-}
-.sach img{
-    width: 110px;
 }
 .sach p{
     margin-top: 20px;
@@ -578,4 +575,103 @@ a{
     color: white;
     width: 29%;
     height: 25px;
+}
+.information-for-contact{
+    background-color: rgb(146, 134, 134);
+    width: 100%;
+}
+.box-1 {
+    padding: 20px;
+    margin: auto;
+    width: 70%;
+    height: 600px;
+    background-color: white;
+    color: gray;
+    display: flex; 
+}
+.contact-title{
+    font-size: 50px;
+}
+.title-4{
+    margin-top: 30px;
+    padding:2px;
+    font-size: 30px;
+}
+.container{
+    background-color: whitesmoke;
+}
+
+
+.profile-card{
+    display: flex;
+    font-family: sans-serif;
+}
+
+
+.gioi-thieu-ban-than{
+    margin: 10px 10px 10px 180px;
+    background-color: white;
+    display: flex;
+    padding: 10px 0px 10px 0px;
+    width: 80%;
+    border-radius: 10px;
+    color: #646464;
+}
+
+.profile-card-1{
+    margin-left: 100px;
+    width: 100%;
+    margin-top: 50px;
+}
+.profile-card .title-5{
+    margin-top: 20px;
+    font-size: 25px;
+}
+.hinh-anh-ban-than{
+    margin-left: 20%;
+}
+.basic-information p{
+    margin-top: 30px;
+}
+
+.table {
+    background-color: rgb(195, 195, 195);
+    padding: 40px;
+    width: 70%;
+    margin: auto;
+  }
+  .table Table {
+    width: 100%;
+    text-align: center;
+  }
+  .button {
+    cursor: pointer;
+  }
+  .form {
+    width: 100%;
+  }
+  #o {
+    text-align: center;
+  }
+  #o th{
+    width: 10px;
+  }
+  .user {
+    color: white;
+    margin-left: auto;
+  }
+  .login-1{
+    margin-right: 10px;
+  }
+  #searchValue{
+    width: 85%;
+    display: block;
+    padding-left: 20px;
+    padding-right: 80px;
+    outline: none;
+    border: none;
+}
+.box-1 a{
+    text-decoration: underline;
+    font-size: 20px;
 }

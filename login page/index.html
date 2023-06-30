@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../layout/index.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="nhan-dan">
+        <div class="logo">
+          <a href="../index.html">
+            <img
+            src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/fahasa-logo.png"
+            alt="FAHASA.COM"
+            width="200px"
+          /></a>
+           
+        </div>
+        <div class="danh-muc">
+          <div class="menu"><i class="fa-solid fa-bars"></i></div>
+          <div class="down"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+        <div class="thanh-tim-kiem">
+          <input type="text" id="searchValue" placeholder="Tìm kiếm sản phẩm mong muốn..." />
+          <div class="kinh-lup">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+        <div class="header-icons">
+          <div class="gio-hang">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <div class="chu-9"><p>Cart shopping</p></div>
+            </a>
+          </div>
+          <div class="tai-khoan">
+            <i class="fa-solid fa-user"></i>
+           <a href="./register.html"><div class="chu-9"> <p>Account</p> </div></a> 
+          </div>  
+          <div class="thong-bao">
+            <a href="../about-me.html"><i class="fa-solid fa-address-card"></i>
+            <div class="chu-9"><p>About me</p></div></a>
+          </div>
+          <div class="ngon-ngu">
+            <a href="../contact.html"><i class="fa-solid fa-phone"></i></a>
+            <div class="chu-9"> <p>Contact</p></div>
+          </div>
+             <div class="login-1"><p id="username"></p></div>
+          <div class="login-2"><a href="./login.html" id="login-btn">Login</a></div>
+          <div class="login-3"><button id="logout-btn">Logout</button></div>
+        </div>
+      </div>
+    </div>
+    <!-- Thay đổi <----------------------------------->
+    <div class="table">
+      <table id="Table">
+        <thead>
+          <tr id="o">
+            <th>Số</th>
+            <th>Tên truyện</th>
+            <th>Số tập</th>
+            <th>Giá</th>
+            <th>Giảm</th>
+            <th class="Edit">Chỉnh sửa</th>
+            <th class="Delete">Xóa</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </body>
+  <script type="module">
+    import booksData from "./data.js"; // Thay đổi <---------------------------------
+    // Chỉnh sửa chỗ này, cần khai báo biến khác, không thể gán trực tiếp lại
+    // giá trị import (hàm deleteTr)
+    var books = booksData; // Thay đổi <---------------------------------
+
+    function searchBooks() {
+      var value = document.getElementById("searchValue").value;
+      if (value == "") {
+        getBooks(books);
+      } else {
+        var filterBooks = [];
+        for (var i = 0; i < books.length; i++) {
+          if (books[i][1].toLowerCase().includes(value.trim().toLowerCase())) {
+            filterBooks.push(books[i]);
+          }
+        }
+        getBooks(filterBooks);
+      }
+    }
+    function deleteTr(id) {
+      var deletedBooks = [];
+      for (var i = 0; i < books.length; i++) {
+        if (id != books[i][0]) {
+          deletedBooks.push(books[i]);
+        }
+      }
+      console.log(deletedBooks);
+      books = deletedBooks;
+      getBooks(books);
+    }
+    function getBooks(books) {
+      var tbody = document.getElementById("tbody");
+      tbody.innerHTML = "";
+      for (var i = 0; i < books.length; i++) {
+        var elementTr = document.createElement("tr");
+        var elementTd = document.createElement("td");
+        elementTd.innerHTML = i + 1;
+        elementTr.appendChild(elementTd);
+        var booksCopy = [...books[i]];
+        booksCopy.shift();
+        for (var j = 0; j < booksCopy.length; j++) {
+          var elementTd = document.createElement("td");
+          elementTd.innerText = booksCopy[j];
+          elementTr.appendChild(elementTd);
+        }
+        //tao nut edit//
+        var editTd = document.createElement("td");
+        var editBtn = document.createElement("button");
+        editBtn.innerHTML = "Chỉnh sửa";
+        editTd.appendChild(editBtn);
+        elementTr.appendChild(editTd);
+        //tao nut delete//
+        var deleteTd = document.createElement("td");
+        var deleteBtn = document.createElement("button");
+        deleteBtn.innerHTML = "Xóa";
+        deleteTd.appendChild(deleteBtn);
+        elementTr.appendChild(deleteTd);
+        // elementTr.setAttribute("id", i + 1);
+
+        // Thay đổi <---------------------------------
+        const bookId = books[i][0];
+        // Sử dụng "const" hoặc "let". Dùng var sẽ bị ghi đè biến i sau mỗi lần lặp
+
+        deleteBtn.addEventListener("click", function () {
+          deleteTr(bookId);
+        });
+
+        tbody.appendChild(elementTr);
+      }
+    }
+    getBooks(books);
+
+    // Thay đổi <---------------------------------
+    var searchValue = document.getElementById("searchValue");
+    searchValue.addEventListener("input", function () {
+      searchBooks();
+    });
+    var usernameTag = document.getElementById("username");
+    // Kiem tra user da dang nhap chua
+    var currentUser = JSON.parse(localStorage.getItem("user"));
+    if (currentUser) {
+      // Da dang nhap
+      usernameTag.innerHTML = currentUser.username;
+
+      // An nut login
+      document.getElementById("login-btn").style.display = "none";
+      // Hien nut logout
+      document.getElementById("logout-btn").style.display = "block";
+    } else {
+      // Chua dang nhap
+      usernameTag.innerHTML = "";
+
+      // An nut login
+      document.getElementById("login-btn").style.display = "block";
+      // Hien nut logout
+      document.getElementById("logout-btn").style.display = "none";
+    }
+
+    // Xu ly dang xuat
+    var logoutBtn = document.getElementById("logout-btn");
+    logoutBtn.addEventListener("click", function () {
+      localStorage.removeItem("user");
+      window.location.href = "./login.html";
+    });
+  </script>
+</html>
