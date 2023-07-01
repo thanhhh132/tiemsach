@@ -52,20 +52,20 @@
           </div>
           <div class="tai-khoan">
             <i class="fa-solid fa-user"></i>
-           <a href="./login page/register.html"><div class="chu-9"> <p>Account</p> </div></a> 
+           <a href="./register.html"><div class="chu-9"> <p>Account</p> </div></a> 
           </div>  
           <div class="thong-bao">
-            <a href="./about-me.html"><i class="fa-solid fa-address-card"></i>
+            <a href="../about-me.html"><i class="fa-solid fa-address-card"></i>
             <div class="chu-9"><p>About me</p></div></a>
-            
           </div>
           <div class="ngon-ngu">
-            <a href="./contact.html"><i class="fa-solid fa-phone"></i></a>
+            <a href="../contact.html"><i class="fa-solid fa-phone"></i></a>
             <div class="chu-9"> <p>Contact</p></div>
           </div>
+             <div class="login-1"><p id="username"></p></div>
+          <div class="login-2"><a href="login page/login.html" id="login-btn">Login</a></div>
+          <div class="login-3"><button id="logout-btn">Logout</button></div>
         </div>
-      </div>
-
       </div>
     </div>
     <div class="content-1">
@@ -546,6 +546,34 @@
         </div>
         <div class="giay-chung-nhan"><p>Giấy chứng nhận Đăng ký Kinh doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 20/12/2005, đăng ký thay đổi lần thứ 10, ngày 20/05/2022.</p></div>
       </div>
-      <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+          var usernameTag = document.getElementById('username')
+    // Kiem tra user da dang nhap chua
+    var currentUser = JSON.parse(localStorage.getItem('user'))
+    if (currentUser) {
+      // Da dang nhap
+      usernameTag.innerHTML = currentUser.username
+
+      // An nut login
+      document.getElementById('login-btn').style.display = 'none'
+      // Hien nut logout
+      document.getElementById('logout-btn').style.display = 'block'
+    } else {
+      // Chua dang nhap
+      usernameTag.innerHTML = ''
+
+      // An nut login
+      document.getElementById('login-btn').style.display = 'block'
+      // Hien nut logout
+      document.getElementById('logout-btn').style.display = 'none'
+    }
+
+    // Xu ly dang xuat
+    var logoutBtn = document.getElementById('logout-btn')
+    logoutBtn.addEventListener('click', function () {
+      localStorage.removeItem('user')
+      window.location.href = 'login page/login.html'
+    })
+      </script>
   </body>
 </html>

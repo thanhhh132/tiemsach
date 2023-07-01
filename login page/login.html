@@ -126,9 +126,9 @@
         };
         localStorage.setItem("user", JSON.stringify(newUser));
         if (username === "admin") {
-          window.location.href = "../index.html"; // Trang table
+          window.location.href = "./index.html"; // Neu la admin thi vao trang table (day la account admin)
         } else {
-          window.location.href = "./index.html"; // Trang danh sach san pham
+          window.location.href = "../index.html"; // Trang danh sach san pham (day la account khach hang)
         }
       } else {
         // Xu li loi
