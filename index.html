@@ -11,10 +11,17 @@
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./layout/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" type="text/css" href="./index.css" /> -->
     <style>
       html {
         scroll-behavior: smooth;
+      }
+      #dot{
+        display: none;
+      }
+      #dots{
+        display: none;
       }
     </style>
   </head>
@@ -37,8 +44,8 @@
         <div class="thanh-tim-kiem">
           <input
             type="text"
-            class="thanh-nhap"
-            placeholder="Tìm kiếm sản phẩm mong muốn..."
+            id="searchValue"
+            placeholder="Tìm kiếm sản phẩm..."
           />
           <div class="kinh-lup">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -52,23 +59,23 @@
           </div>
           <div class="tai-khoan">
             <i class="fa-solid fa-user"></i>
-           <a href="./register.html"><div class="chu-9"> <p>Account</p> </div></a> 
+           <a href="./login page/login.html"><div class="chu-9"> <p>Account</p> </div></a> 
           </div>  
           <div class="thong-bao">
-            <a href="../about-me.html"><i class="fa-solid fa-address-card"></i>
+            <a href="./about-me.html"><i class="fa-solid fa-address-card"></i>
             <div class="chu-9"><p>About me</p></div></a>
           </div>
           <div class="ngon-ngu">
-            <a href="../contact.html"><i class="fa-solid fa-phone"></i></a>
+            <a href="./contact.html"><i class="fa-solid fa-phone"></i></a>
             <div class="chu-9"> <p>Contact</p></div>
           </div>
              <div class="login-1"><p id="username"></p></div>
           <div class="login-2"><a href="login page/login.html" id="login-btn">Login</a></div>
-          <div class="login-3"><button id="logout-btn">Logout</button></div>
         </div>
       </div>
     </div>
-    <div class="content-1">
+    <div class="content-1">  
+      <button id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
       <div class="container">
         <div class="row">
           <div class="col-8">
@@ -152,16 +159,16 @@
     <div class="san-pham-1">
       <div class="anh-3">
         <div class="anh-4">
-          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/HoiSachT323_B%E1%BB%992_310x210png.png" width="300px" height="210px" alt="">
+          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/HoiSachT323_B%E1%BB%992_310x210png.png" width="290px" height="200px" alt="">
         </div>
         <div class="anh-4">
-          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/SubBanner_310x210-01.png" width="300px" height="210px" alt="">
+          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/SubBanner_310x210-01.png" width="290px" height="200px" alt="">
         </div>        
         <div class="anh-4">
-          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/VanHocT323_Banner_310x210.jpg" width="300px" height="210px" alt="">
+          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/VanHocT323_Banner_310x210.jpg" width="290px" height="200px" alt="">
         </div>        
         <div class="anh-4">
-          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/FAHASA%20310x210.png" width="300px" height="210px" alt="">
+          <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2023/FAHASA%20310x210.png" width="290px" height="200px" alt="">
         </div>
       </div>
       <div class="gioi-thieu-san-pham-1">
@@ -256,7 +263,7 @@
             </div>
           </div>
         </div>
-        <div class="xu-huong-mua-sam">
+        <div id="xu-huong-mua-sam">
           <div class="title-1">
             <i class="fa-solid fa-fire"></i> <span>XU HƯỚNG MUA SẮM</span>
           </div>
@@ -361,10 +368,54 @@
                 </div>
               </a>
             </div>
+            <div id="dot">.</div>
+            <div id="expandContent1">
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>  
+            </div>
+            <button id="expandBtn1" onclick="expand1()"><b>Xem Thêm</b></button> 
           </div>
-          <div class="xem-them-1"><b>Xem Thêm</b></div>
+     
         </div>
-        <div class="combo">
+        <div id="combo">
           <div class="title-2"><b>COMBO</b></div> 
           <div class="san-pham-2">
             <div class="san-pham">
@@ -447,8 +498,52 @@
                 <div class="so-tap-1"><b>-16%</b></div>
               </div>
             </div>
-          </div>
-          <div class="xem-them-1"><b>Xem Thêm</b></div>
+            <div id="dots">...</div>
+            <div id="expandContent2">
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>
+              <div class="san-pham">
+                <img src="https://cdn0.fahasa.com/media/catalog/product/c/o/combo-8935086855256-8935086854051.jpg" alt="">
+                <p>Combo Sách Người Giỏi Không Phải Là Người Làm Tất Cả...</p>
+                <div class="gia-tap">
+                  <div class="gia-ban"> <b>106.000 đ</b></div>
+                  <div class="so-tap-1"><b>-16%</b></div>
+                </div>
+              </div>  
+            </div>
+            <button id="expandBtn2" onclick="expand2()">Xem Thêm</button>
+          </div> 
+      
         </div>
       </div>
     </div>
@@ -538,7 +633,6 @@
                 <div class="hinh-anh-4"><img style="max-width: 120px;  " src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/vnpay_logo.png"></div>
                 <div class="hinh-anh-4"><img style="max-width: 120px;  " src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/ZaloPay-logo-130x83.png"></div>
                 <div class="hinh-anh-4"><img style="height: 50px; " src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/momopay.png"></div>
-                <div class="hinh-anh-4"><img style="height: 44px;  " src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/shopeepay_logo1.png"></div>
                 <div class="hinh-anh-4"><img style="height: 65px; " src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/logo_moca_120.jpg"></div>
               </div>
             </div> 
@@ -546,34 +640,52 @@
         </div>
         <div class="giay-chung-nhan"><p>Giấy chứng nhận Đăng ký Kinh doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 20/12/2005, đăng ký thay đổi lần thứ 10, ngày 20/05/2022.</p></div>
       </div>
-      <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
-          var usernameTag = document.getElementById('username')
-    // Kiem tra user da dang nhap chua
-    var currentUser = JSON.parse(localStorage.getItem('user'))
-    if (currentUser) {
-      // Da dang nhap
-      usernameTag.innerHTML = currentUser.username
-
-      // An nut login
-      document.getElementById('login-btn').style.display = 'none'
-      // Hien nut logout
-      document.getElementById('logout-btn').style.display = 'block'
+  <script>
+    let mybutton = document.getElementById("myBtn");
+    myBtn.addEventListener("click", topFunction);
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
     } else {
-      // Chua dang nhap
-      usernameTag.innerHTML = ''
-
-      // An nut login
-      document.getElementById('login-btn').style.display = 'block'
-      // Hien nut logout
-      document.getElementById('logout-btn').style.display = 'none'
+      mybutton.style.display = "none";
     }
-
-    // Xu ly dang xuat
-    var logoutBtn = document.getElementById('logout-btn')
-    logoutBtn.addEventListener('click', function () {
-      localStorage.removeItem('user')
-      window.location.href = 'login page/login.html'
-    })
-      </script>
+  }
+    function topFunction() {
+    document.documentElement.scrollTop = 0;
+  }
+  function expand1() {    
+    var expandContent1 = document.getElementById("expandContent1")
+    var btnText1 = document.getElementById("expandBtn1")
+    if(dot.style.display === 'none'){
+      dot.style.display = "inline";
+      btnText1.innerHTML = "Xem Thêm";
+      expandContent1.style.display = "none";
+      document.getElementById("xu-huong-mua-sam").style.height = "850px"
+    }
+    else{
+      dot.style.display = 'none'
+      btnText1.innerHTML = "Rút gọn";
+      expandContent1.style.display = "flex"
+      document.getElementById("xu-huong-mua-sam").style.height = "1200px"
+    }
+  }
+  function expand2() {    
+    var expandContent2 = document.getElementById("expandContent2")
+    var btnText2 = document.getElementById("expandBtn2")
+    if(dots.style.display === 'none'){
+      dots.style.display = "inline";
+      btnText2.innerHTML = "Xem Thêm";  
+      expandContent2.style.display = "none";
+      document.getElementById("combo").style.height = "850px"
+    }
+    else{
+      dots.style.display = 'none';
+      btnText2.innerHTML = "Rút gọn";
+      expandContent2.style.display = "flex"
+      document.getElementById("combo").style.height = "1200px"
+    }
+  }
+  </script>
   </body>
 </html>
